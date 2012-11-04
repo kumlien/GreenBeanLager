@@ -6,8 +6,16 @@ Lagermodul för Green Bean
 Lagersystemet erbjuder ett restliknande json-api över http. 
 De metoder som erbjuds är
 
-1) Hämta lagersaldo för en viss produkt
+1) Hämta info för en viss produkt
 via http GET: http://<server>/<context-root>/product/{productId}
+Returnerar en json sträng enligt
+
+{
+  "productId" : "1",
+  "name" : "ett namn",
+  "itemsInStock" : 500,
+  "reOrderPoint" : 100
+}
 
 2) Skicka beställning
 via http POST: http://<server>/<context-root>/order/{orderId}

@@ -48,8 +48,12 @@ public class LagerController {
 	
 	@RequestMapping(value="/product/{productId}", method = RequestMethod.GET) 
 	@ResponseBody
-	public Integer getProductSaldo(@PathVariable String productId) throws NoSuchProductException {
-		return repo.getStatus(productId);
+	public Product getProductSaldo(@PathVariable String productId) throws NoSuchProductException {
+		Product p = new Product();
+		p.setProductId(productId);
+		p.setItemsInStock(repo.getStatus(productId));
+		p.setReOrderPoint(100);
+		return p;
 	}
 	
 	@RequestMapping(value="/order/{orderId}", method = RequestMethod.POST) 
