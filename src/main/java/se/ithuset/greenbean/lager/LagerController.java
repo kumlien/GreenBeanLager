@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class LagerController {
 	
-	private static final Logger logger = Logger.getLogger(HomeController.class);
+	private static final Logger logger = Logger.getLogger(LagerController.class);
 	
 	@Autowired @Qualifier("InMemoryStockRepository") StockRepository repo;
 	
@@ -47,8 +47,8 @@ public class HomeController {
 	
 	@RequestMapping(value="/product/{productId}", method = RequestMethod.GET) 
 	@ResponseBody
-	public Integer getProductSaldo(@PathVariable String productId) {
-		return 5;
+	public Integer getProductSaldo(@PathVariable String productId) throws NoSuchProductException {
+		return repo.getStatus(productId);
 	}
 	
 	@RequestMapping(value="/order/{orderId}", method = RequestMethod.POST) 
@@ -64,9 +64,9 @@ public class HomeController {
 		return new Order();
 	}
 	
-	@ExceptionHandler(NotEnoughItemsInStockException.class)
+	@ExceptionHandler({NotEnoughItemsInStockException.class, NoSuchProductException.class})
 	public @ResponseBody String handleExceptions(Exception e) {
-		return "Det blev fel... " + e.getMessage();
+		return e.getMessage();
 	}
 			
 	
