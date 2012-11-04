@@ -1,5 +1,7 @@
 package se.ithuset.greenbean.lager;
 
+import java.util.Map;
+
 public interface StockRepository {
 	
 	/**
@@ -27,4 +29,6 @@ public interface StockRepository {
 	 * @return The updated number of items in stock
 	 */
 	int addToStock(String productId, int qty) throws NoSuchProductException;
+
+	Map<String, Integer> getCompleteStockStatus();
 }

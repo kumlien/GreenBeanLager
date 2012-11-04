@@ -2,13 +2,20 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Green Bean Lager</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	Välkommen till Green Bean Lager  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+Lagerstatus just nu är:
+<table>
+	<tr><td>ProduktId</td><td>Lagersaldo</td></tr>
+	<c:forEach items="${stock}" var="entry">
+		<tr><td>${entry.key}</td><td>${entry.value}</td></tr>
+	</c:forEach>  
+</table>
+
 </body>
 </html>

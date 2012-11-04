@@ -1,6 +1,6 @@
 package se.ithuset.greenbean.lager;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component("InMemoryStockRepository")
 public class InMemoryStockRepository implements StockRepository {
 	
-	private static final Map<String, Integer> inventory = new HashMap<String, Integer>();
+	private static final Map<String, Integer> inventory = new LinkedHashMap<String, Integer>();
 	
 	
 	@PostConstruct public void init() {
@@ -71,6 +71,11 @@ public class InMemoryStockRepository implements StockRepository {
 			inventory.put(productId, qty);
 			return qty;
 		}
+	}
+
+	@Override
+	public Map<String, Integer> getCompleteStockStatus() {
+		return inventory;
 	}
 
 }

@@ -41,6 +41,7 @@ public class LagerController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("stock", repo.getCompleteStockStatus());
 		
 		return "home";
 	}
