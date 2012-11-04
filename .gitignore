@@ -22,3 +22,19 @@ target/m2e-wtp/web-resources/META-INF/maven/se.ithuset/greenbean/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/se.ithuset/greenbean/pom.xml
 
 target/test-classes/log4j.xml
+
+.classpath
+
+.project
+
+target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/log4j.xml
+
+target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml
+
+target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml
+
+target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/home.jsp
+
+target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/web.xml
+
+target/maven-archiver/pom.properties
