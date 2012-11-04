@@ -2,13 +2,14 @@ package se.ithuset.greenbean.lager;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
 /**
- * Simple in-memory based repo.
+ * Simple in-memory based stock repo.
  * 
  * 
  * @author svante
@@ -19,13 +20,14 @@ public class InMemoryStockRepository implements StockRepository {
 	
 	private static final Map<String, Integer> inventory = new LinkedHashMap<String, Integer>();
 	
+	private static final Map<String, Integer> reOrderPoints = new LinkedHashMap<String, Integer>();
+	
 	
 	@PostConstruct public void init() {
-		inventory.put("1", 500);
-		inventory.put("2", 500);
-		inventory.put("3", 500);
-		inventory.put("4", 500);
-		inventory.put("5", 500);
+		for(int i=1; i<6; i++) {
+			inventory.put(i+"", new Random().nextInt(500));
+			reOrderPoints.put(i+"", new Random().nextInt(50));
+		}
 	}
 
 	/* (non-Javadoc)
@@ -76,6 +78,14 @@ public class InMemoryStockRepository implements StockRepository {
 	@Override
 	public Map<String, Integer> getCompleteStockStatus() {
 		return inventory;
+	}
+
+	@Override
+	public int getReOrderPoint(String productId) throws NoSuchProductException {
+		if(!reOrderPoints.containsKey(productId)) {
+			throw new NoSuchProductException("No product in stock with productId '" + productId + "'");
+		}
+		return reOrderPoints.get(productId);
 	}
 
 }

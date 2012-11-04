@@ -29,6 +29,14 @@ public interface StockRepository {
 	 * @return The updated number of items in stock
 	 */
 	int addToStock(String productId, int qty) throws NoSuchProductException;
+	
+	/**
+	 * Get the reorder point for the specified productId
+	 * 
+	 * @param productId
+	 */
+	int getReOrderPoint(String productId) throws NoSuchProductException;
+	
 
 	Map<String, Integer> getCompleteStockStatus();
 }
