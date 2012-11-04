@@ -48,7 +48,7 @@ public class LagerController {
 	
 	@RequestMapping(value="/product/{productId}", method = RequestMethod.GET) 
 	@ResponseBody
-	public int getProductInfo(@PathVariable String productId) throws NoSuchProductException {
+	public Product getProductInfo(@PathVariable String productId) throws NoSuchProductException {
 		return repo.getStatus(productId);
 	}
 	

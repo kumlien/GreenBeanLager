@@ -8,7 +8,7 @@ public interface StockRepository {
 	 * Get the number of items in stock for the specified productId
 	 * @param productId
 	 */
-	int getStatus(String productId) throws NoSuchProductException;
+	Product getStatus(String productId) throws NoSuchProductException;
 	
 	/**
 	 * 'Get' the specified number of items from the stock.

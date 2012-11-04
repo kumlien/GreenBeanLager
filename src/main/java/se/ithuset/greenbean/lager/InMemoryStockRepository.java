@@ -22,24 +22,36 @@ public class InMemoryStockRepository implements StockRepository {
 	
 	private static final Map<String, Integer> reOrderPoints = new LinkedHashMap<String, Integer>();
 	
+	private static final Map<String, String> productNames = new LinkedHashMap<String, String>();
+	
 	
 	@PostConstruct public void init() {
 		for(int i=1; i<6; i++) {
 			inventory.put(i+"", new Random().nextInt(500));
 			reOrderPoints.put(i+"", new Random().nextInt(50));
 		}
+		productNames.put("1", "Coffee: Robusta 1kg");
+		productNames.put("2", "Coffee: Arabica Brazil 1kg");
+		productNames.put("3", "Software: Roast automation system");
+		productNames.put("4", "Roaster: Hot air roasting machine");
+		productNames.put("5", "Roaster: Drum roasting machine");
 	}
 
 	/* (non-Javadoc)
 	 * @see se.ithuset.greenbean.lager.Repository#getStatus(int)
 	 */
-	public int getStatus(String productId) throws NoSuchProductException {
+	public Product getStatus(String productId) throws NoSuchProductException {
 		if(inventory.get(productId) == null) {
 			throw new NoSuchProductException("No product in stock with productId '" + productId + "'");
 		}
+		Product p = new Product();
 		synchronized (inventory) {
-			return inventory.get(productId);
+			p.setItemsInStock(inventory.get(productId));
+			p.setProductId(productId);
+			p.setReOrderPoint(getReOrderPoint(productId));
+			p.setName(productNames.get(productId));
 		}
+		return p;
 	}
 
 	/* (non-Javadoc)
