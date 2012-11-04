@@ -38,3 +38,4 @@ target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/home.jsp
 target/greenbean-1.0.0-BUILD-SNAPSHOT/WEB-INF/web.xml
 
 target/maven-archiver/pom.properties
+/target
