@@ -3,16 +3,18 @@ GreenBeanLager
 
 Starta appen med 
 mvn -Djetty.port=8081 jetty:run
+eller
+mvn tomcat:run
 
 
-Lagermodul fšr Green Bean
+Lagermodul fï¿½r Green Bean
 
-Lagersystemet erbjuder ett restliknande json-api šver http. 
-De metoder som erbjuds Šr
+Lagersystemet erbjuder ett restliknande json-api ï¿½ver http. 
+De metoder som erbjuds ï¿½r
 
-1) HŠmta info fšr en viss produkt
+1) Hï¿½mta info fï¿½r en viss produkt
 via http GET: http://<server>/<context-root>/product/{productId}
-Returnerar en json strŠng enligt
+Returnerar en json strï¿½ng enligt
 
 {
   "productId" : "1",
@@ -21,13 +23,13 @@ Returnerar en json strŠng enligt
   "reOrderPoint" : 100
 }
 
-2) Skicka bestŠllning
+2) Skicka bestï¿½llning
 via http POST: http://<server>/<context-root>/order/{orderId}
-body ‡ la: {
+body ï¿½ la: {
   "productId" : "1",
   "qty" : "1",
   "customerName" : "Torsten Bengtsson",
-  "addressStreet" : "SnšsvŠngen 3",
-  "addressCity" : "HamrŒngefjŠrden",
+  "addressStreet" : "Snï¿½svï¿½ngen 3",
+  "addressCity" : "Hamrï¿½ngefjï¿½rden",
   "addressZip" : "81793"
 }
