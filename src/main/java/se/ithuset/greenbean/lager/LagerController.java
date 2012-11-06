@@ -65,6 +65,13 @@ public class LagerController {
 		return new Order();
 	}
 	
+	@RequestMapping(value="/ping", method = RequestMethod.GET) 
+	@ResponseBody
+	public String getOrder() {
+		return "pong";
+	}
+	
+	
 	@ExceptionHandler({NotEnoughItemsInStockException.class, NoSuchProductException.class})
 	public @ResponseBody String handleExceptions(Exception e) {
 		return e.getMessage();
