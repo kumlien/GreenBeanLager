@@ -1,6 +1,10 @@
 GreenBeanLager
 ==============
 
+Starta appen med 
+mvn -Djetty.port=8081 jetty:run
+
+
 Lagermodul fšr Green Bean
 
 Lagersystemet erbjuder ett restliknande json-api šver http. 
